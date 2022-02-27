@@ -21,7 +21,7 @@ const Register = () => {
       
         axios.post('http://127.0.0.1:8000/api/auth/register', { ...user })
         .then(res => {
-            if(res.data.message = "User successfully registered"){
+            if(res.data.message =="User successfully registered"){
                 navigate("/login");
             }
         }).catch(function (error) {

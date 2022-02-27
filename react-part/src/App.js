@@ -4,6 +4,7 @@ import Nav from './components/Nav'
 import Login from './pages/Login'
 import Landing from './pages/Landing'
 import Register from './pages/Register'
+import Dashboard from './pages/Dashboard'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route exact path='/' element={<Landing/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/register' element={<Register/>}/>
+            <Route path='/dashboard' element={<Dashboard/>}/>
           </Routes>
       </Router>
     </div>
