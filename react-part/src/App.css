@@ -1,6 +1,6 @@
 body {
   min-height: 75rem;
-  padding-top: 4.5rem;
+  padding-top: 15rem;
 }
 
 .navbar{
@@ -36,4 +36,14 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.btn-primary{
+  background-color: #6886C5;
+  border: none;
+}
+
+.btn-primary:hover{
+  filter: brightness(110%);
+  background-color: #6886C5;
 }

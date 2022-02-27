@@ -19,7 +19,7 @@ const Register = () => {
             password_confirmation: password_confirmation
         };
       
-        axios.post('http://127.0.0.1:8000/api/auth/register', { ...user })
+        axios.post('http://127.0.0.1:8000/api/auth/register', {...user })
         .then(res => {
             if(res.data.message =="User successfully registered"){
                 navigate("/login");

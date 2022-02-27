@@ -12,6 +12,7 @@ const Dashboard = () => {
         axios.get('http://127.0.0.1:8000/api/auth/user-profile',
         {headers: {"Authorization" : `Bearer ${token}`} })
         .then(res => {
+            console.log(res.data);
             setName(res.data.name);
             setEmail(res.data.email);
         }).catch(function (error) {
