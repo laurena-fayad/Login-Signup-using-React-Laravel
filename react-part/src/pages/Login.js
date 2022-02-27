@@ -16,9 +16,10 @@ const Login = () => {
         password: password,
     };
   
-    axios.post('http://127.0.0.1:8000/api/auth/login', { ...user })
+    axios.post('http://127.0.0.1:8000/api/auth/login', {...user })
     .then(res => {
       if(res.data.user.email == email){
+        localStorage.setItem('token', res.data.access_token)
         navigate("/dashboard");
       }
     }).catch(function (error) {
