@@ -1,11 +1,16 @@
-body {
+body, html {
   margin : 0px !important;
+  height: 100%;
 }
 
 .navbar{
   padding: 0.5% 3%;
   background-color: #6886C5 !important;
   font-family: 'Baloo';
+}
+
+h2{
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
 /*SIGNIN*/
@@ -45,4 +50,10 @@ body {
 .btn-primary:hover{
   filter: brightness(110%);
   background-color: #6886C5;
+}
+
+.contact_form{
+  /* style={{backgroundColor: "#6886C5", height:500}} */
+  background-color: #6886C5;
+  height: 500px;
 }

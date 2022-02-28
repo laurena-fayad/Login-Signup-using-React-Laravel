@@ -3,10 +3,11 @@ import {Card, CardContent, Grid, TextField, Button, Typography} from '@material-
 
 const ContactForm = () => {
   return (
-    <div>
-      <Card style={{ maxWidth: 450, margin: "0 auto", padding: "20px 5px" }}>
+    <div className="contact_form">
+      <div style={{height: 40}}></div>
+      <Card className="align-middle justify-content-center" style={{ maxWidth: 650, margin: "0 auto", padding: "20px 5px"}}>
         <CardContent>
-          <Typography gutterBottom variant="h5">Contact Us</Typography>
+          <Typography variant="h5" style={{textAlign: "center", marginBottom: "25px"}}>Contact Us</Typography>
           <form>
             <Grid container spacing={1}>
               <Grid xs={12} sm={6} item>
