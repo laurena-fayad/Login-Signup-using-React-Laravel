@@ -53,7 +53,10 @@ body, html {
 }
 
 .contact_form{
-  /* style={{backgroundColor: "#6886C5", height:500}} */
   background-color: #6886C5;
   height: 500px;
+}
+
+.login-container{
+  height: 100%;
 }
