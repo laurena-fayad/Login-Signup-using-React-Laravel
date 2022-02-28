@@ -54,7 +54,6 @@ const Register = () => {
               <div className="form-floating mb-3">
                 <input
                   className="form-control"
-                  id="floatingInput"
                   placeholder="Full Name"
                   required
                   onChange={(e) => setName(e.target.value)}
@@ -65,7 +64,6 @@ const Register = () => {
                 <input
                   type="email"
                   className="form-control"
-                  id="floatingInput"
                   placeholder="name@example.com"
                   required
                   onChange={(e) => setEmail(e.target.value)}
@@ -87,7 +85,6 @@ const Register = () => {
                 <input
                   type="password"
                   className="form-control"
-                  id="floatingPassword"
                   placeholder="Password Confirmation"
                   required
                   onChange={(e) => setPasswordConfirmation(e.target.value)}

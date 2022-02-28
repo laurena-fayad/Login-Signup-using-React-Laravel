@@ -1,12 +1,49 @@
-import React from 'react'
+import emailjs from '@emailjs/browser';
+import React, {useState} from 'react'
 import {Card, CardContent, Grid, TextField, Button, Typography} from '@material-ui/core';
 
+emailjs.init("cqDsxAUbvcZ7YixNw");
+
 const ContactForm = () => {
+  const [first_name, setFName] = useState("");
+  const [last_name, setLName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState("");
+
+  const submit = (e) => {
+    e.preventDefault();
+
+     emailjs.send("service_ishf20s","template_m09eo0h",{
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      message: message,
+      }).then(
+        (result) => {
+          if(result.text == "OK"){
+            setStatus({ type: 'success' });
+          }
+        },
+        (error) => {
+          setStatus({type: 'error', error});
+        }
+      );
+  };
+
   return (
     <div className="contact_form d-flex align-items-center">
-      <Card style={{ maxWidth: 600, margin: "0 auto", padding: "20px 5px"}}>
+      <Card
+        onSubmit={submit}
+        style={{ maxWidth: 600, margin: "0 auto", padding: "20px 5px" }}
+      >
         <CardContent>
-          <Typography variant="h5" style={{textAlign: "center", marginBottom: "25px"}}>Contact Us</Typography>
+          <Typography
+            variant="h5"
+            style={{ textAlign: "center", marginBottom: "25px" }}
+          >
+            Contact Us
+          </Typography>
           <form>
             <Grid container spacing={1}>
               <Grid xs={12} sm={6} item>
@@ -16,6 +53,7 @@ const ContactForm = () => {
                   variant="outlined"
                   fullWidth
                   required
+                  onChange={(e) => setFName(e.target.value)}
                 />
               </Grid>
               <Grid xs={12} sm={6} item>
@@ -25,6 +63,7 @@ const ContactForm = () => {
                   variant="outlined"
                   fullWidth
                   required
+                  onChange={(e) => setLName(e.target.value)}
                 />
               </Grid>
               <Grid xs={12} item>
@@ -35,6 +74,7 @@ const ContactForm = () => {
                   variant="outlined"
                   fullWidth
                   required
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </Grid>
               <Grid xs={12} item>
@@ -46,6 +86,7 @@ const ContactForm = () => {
                   variant="outlined"
                   fullWidth
                   required
+                  onChange={(e) => setMessage(e.target.value)}
                 />
               </Grid>
               <Grid xs={12} item>
@@ -61,6 +102,12 @@ const ContactForm = () => {
                 >
                   Submit
                 </Button>
+                <>
+                {status?.type === 'success' && <p className='status_msg'>Message successfully sent!</p>}
+                {status?.type === 'error' && (
+                  <p className='status_msg'>Error - Message not sent.</p>
+                )}
+              </>
               </Grid>
             </Grid>
           </form>
@@ -69,5 +116,4 @@ const ContactForm = () => {
     </div>
   );
 };
-
 export default ContactForm;
