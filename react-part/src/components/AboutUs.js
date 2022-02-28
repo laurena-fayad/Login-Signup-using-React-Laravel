@@ -18,9 +18,9 @@ const AboutUs = () => {
             />
           </div>
           <div class="col-lg-6">
-            <h2 class="display-5 fw-bold lh-1 mb-3">
+            <p class="about display-5 lh-1 mb-3">
               About bookmates
-            </h2>
+            </p>
             <p class="lead">
               Ever finished a book and wanted to discuss the ending with someone, but that someone wasn't around? 
               Bookmates is an application meant to bring you closer to readers around you.

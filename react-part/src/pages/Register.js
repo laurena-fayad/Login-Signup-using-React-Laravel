@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Nav from "../components/Nav"
 
 const Register = () => {
   let navigate = useNavigate();
@@ -33,6 +34,7 @@ const Register = () => {
 
   return (
     <main className="form-signin">
+      <Nav/>
       <form onSubmit={submit}>
         <h1 className="h3 mb-3 fw-normal">Create An Account</h1>
         <input
