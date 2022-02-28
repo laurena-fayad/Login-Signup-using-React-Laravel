@@ -3,9 +3,8 @@ import {Card, CardContent, Grid, TextField, Button, Typography} from '@material-
 
 const ContactForm = () => {
   return (
-    <div className="contact_form">
-      <div style={{height: 40}}></div>
-      <Card className="align-middle justify-content-center" style={{ maxWidth: 650, margin: "0 auto", padding: "20px 5px"}}>
+    <div className="contact_form d-flex align-items-center">
+      <Card style={{ maxWidth: 600, margin: "0 auto", padding: "20px 5px"}}>
         <CardContent>
           <Typography variant="h5" style={{textAlign: "center", marginBottom: "25px"}}>Contact Us</Typography>
           <form>
