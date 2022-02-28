@@ -1,6 +1,5 @@
 body {
-  min-height: 75rem;
-  padding-top: 15rem;
+  margin : 0px !important;
 }
 
 .navbar{

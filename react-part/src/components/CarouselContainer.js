@@ -13,21 +13,21 @@ const CarouselContainer = () => {
   };
   return (
     <Carousel activeIndex={index} onSelect={handleSelect}>
-    <Carousel.Item>
+    <Carousel.Item interval={3000}>
       <img
         className="d-block w-100"
         src={image1}
         alt="First slide"
       />
     </Carousel.Item>
-    <Carousel.Item>
+    <Carousel.Item interval={3000}>
       <img
         className="d-block w-100"
         src={image2}
         alt="Second slide"
       />
     </Carousel.Item>
-    <Carousel.Item>
+    <Carousel.Item interval={3000}>
       <img
         className="d-block w-100"
         src={image3}
