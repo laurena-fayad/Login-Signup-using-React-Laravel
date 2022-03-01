@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Nav from "../components/Nav"
 import logo from "./../assets/bookmates-transparent.png";
+import Footer from "../components/Footer";
 
 const Login = () => {
   let navigate = useNavigate();
@@ -77,6 +78,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

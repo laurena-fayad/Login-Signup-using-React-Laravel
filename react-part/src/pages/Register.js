@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Nav from "../components/Nav";
 import logo from "./../assets/bookmates-transparent.png";
+import Footer from "../components/Footer";
 
 const Register = () => {
   let navigate = useNavigate();
@@ -99,6 +100,7 @@ const Register = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
