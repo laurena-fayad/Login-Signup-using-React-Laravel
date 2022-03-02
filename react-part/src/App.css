@@ -142,7 +142,7 @@ input.search{
   color: inherit;
 }
 
-#updates, .register{
+#updates, .register, #logged{
   color:#6886C5;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: 300;

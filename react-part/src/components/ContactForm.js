@@ -23,10 +23,12 @@ const ContactForm = () => {
         (result) => {
           if(result.text == "OK"){
             setStatus({ type: 'success' });
+            e.target.reset();
           }
         },
         (error) => {
           setStatus({type: 'error', error});
+          e.target.reset();
         }
       );
   };

@@ -10,7 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const submit = async (e) => {
+  const submit = (e) => {
     e.preventDefault();
 
     const user = {
@@ -29,7 +29,11 @@ const Login = () => {
         }
       })
       .catch(function (error) {
-        console.log(error);
+        if (error = "Unauthorized")
+        {
+          document.getElementById("logged").innerHTML = "Incorrect email/password."
+          e.target.reset();
+        }
       });
   };
 
@@ -78,6 +82,8 @@ const Login = () => {
                 Log in
               </button>
             </form>
+            <div id="logged" className="text-center py-4"></div>
+            
           </div>
         </div>
       </div>
