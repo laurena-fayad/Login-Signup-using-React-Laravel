@@ -9,8 +9,15 @@ body, html {
   font-family: 'Baloo';
 }
 
-.about{
+.about, .search{
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.search{
+  font-size:smaller;
+  border-radius: 30px;
+  text-decoration: none;
+  margin-left: 20px;
 }
 
 .status_msg{

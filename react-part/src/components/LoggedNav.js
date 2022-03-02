@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const LoggedNav = () => {
   let navigate = useNavigate();
+  const [openModal, setOpenModal] = useState(false);
 
   const logout = () => {
     localStorage.clear();
@@ -16,6 +17,7 @@ const LoggedNav = () => {
           <Link to="/dashboard" className="navbar-brand">
             bookmates
           </Link>
+          <input className="search form-control form-control-dark w-50" type="text" placeholder="Search" aria-label="Search"></input>
           <button
             className="navbar-toggler"
             type="button"
@@ -30,13 +32,12 @@ const LoggedNav = () => {
           <div className="collapse navbar-collapse" id="navbarCollapse">
             <ul className="navbar-nav ms-auto mb-2 mb-md-0">
               <li className="nav-item">
-                <Link
-                  to="/dashboard"
+                <a
                   className="nav-link active"
                   aria-current="page"
                 >
                   Edit Profile
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
                 <a

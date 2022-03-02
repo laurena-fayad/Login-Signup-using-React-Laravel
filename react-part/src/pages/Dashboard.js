@@ -6,6 +6,7 @@ import CarouselContainer from "../components/CarouselContainer";
 import ContactForm from "../components/ContactForm";
 import Footer from "../components/Footer";
 import LoggedNav from "../components/LoggedNav";
+import EditProfile from "../components/EditProfile";
 
 const Dashboard = () => {
   let navigate = useNavigate();
@@ -33,9 +34,6 @@ const Dashboard = () => {
   return (
     <div>
       <LoggedNav />
-      <CarouselContainer />
-      <AboutUs />
-      <ContactForm />
       <Footer />
     </div>
   );
