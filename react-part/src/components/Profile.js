@@ -12,7 +12,7 @@ const Profile = () => {
   const [updated_email, setUpdatedEmail] = useState("");
   const [updated_name, setUpdatedName] = useState("");
   const [updated_password, setUpdatedPassword] = useState("");
-
+  const [password_conf, setPasswordConf] = useState("");
 
   const updateEmail = (e) => {
     e.preventDefault();
@@ -47,6 +47,28 @@ const Profile = () => {
         document.getElementById("updates").innerHTML = error
       });
   };
+
+
+  const updatePassword = (e) => {
+    e.preventDefault();
+
+    if (updated_password == password_conf){
+      axios
+      .post("http://127.0.0.1:8000/api/auth/update-profile", {password:updated_password, password_confirmation:password_conf},
+      {headers: { Authorization: `Bearer ${token}`}})
+      .then((res) => {
+        if (res.data.message == "Password updated") {
+          document.getElementById("updates").innerHTML = "Password updated!"
+        }
+      })
+      .catch(function (error) {
+        document.getElementById("updates").innerHTML = error
+      });
+    }else{
+      document.getElementById("updates").innerHTML = "Passwords do not match!"
+    }
+  };
+
 
   return (
     <div class="bg-white mt-1 mb-5">
@@ -84,13 +106,23 @@ const Profile = () => {
               <div class="col-md-12">
                 <label class="labels">Password</label>
                 <input
-                  type="text"
+                  type="password"
                   class="form-control"
                   placeholder="Password"
-                />
+                  onChange={(e) => setUpdatedPassword(e.target.value)}/>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-12">
+                <label class="labels">Password Confirmation</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Password"
+                  onChange={(e) => setPasswordConf(e.target.value)}/>
                 <div class="mt-2 text-end">
-                  <button class="btn btn-primary profile-button" type="button">
-                    Update Password
+                  <button class="btn btn-primary profile-button" type="button" onClick={updatePassword}>
+                    Confirm Updated Password
                   </button>
                 </div>
               </div>

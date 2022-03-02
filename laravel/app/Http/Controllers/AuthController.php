@@ -79,6 +79,7 @@ class AuthController extends Controller
 
             if($request['name']){
             $user->name = $request['name'];
+            $user->save();
             return response()->json([
                 'message' => 'Name updated',
                 'user' => $user
@@ -86,6 +87,7 @@ class AuthController extends Controller
 
             if($request['email']){
                 $user->email = $request['email'];
+                $user->save();
                 return response()->json([
                     'message' => 'Email updated',
                     'user' => $user
@@ -93,12 +95,12 @@ class AuthController extends Controller
 
             if($request['password']){
                 $user->password = bcrypt($request->password);
+                $user->save();
                 return response()->json([
                     'message' => 'Password updated',
                     'user' => $user
                 ], 201);}
     
-            $user->save();
         }
     }
     /**
