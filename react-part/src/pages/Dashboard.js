@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Footer from "../components/Footer";
 import LoggedNav from "../components/LoggedNav";
-import EditProfile from "../components/EditProfile";
 import Sidebar from "../components/Sidebar";
 
 const Dashboard = () => {
@@ -33,7 +31,6 @@ const Dashboard = () => {
     <div>
       <LoggedNav />
       <Sidebar/>
-      <EditProfile/>
     </div>
   );
 };

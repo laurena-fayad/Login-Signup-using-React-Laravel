@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-const EditProfile = () => {
+const Profile = () => {
   return (
     <div class="rounded bg-white mt-5 mb-5">
       <div class="row">
@@ -61,4 +61,4 @@ const EditProfile = () => {
   );
 };
 
-export default EditProfile;
+export default Profile;

@@ -5,6 +5,7 @@ import Landing from "./pages/Landing";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./pages/ProtectedRoute";
+import EditProfile from "./pages/EditProfile";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route element={<ProtectedRoute />}>
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route exact path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/edit-profile" element={<EditProfile/>}/>
           </Route>
         </Routes>
       </Router>
