@@ -23,6 +23,8 @@ const Login = () => {
       .then((res) => {
         if (res.data.user.email == email) {
           localStorage.setItem("token", res.data.access_token);
+          localStorage.setItem("name", res.data.user.name);
+          localStorage.setItem("email", res.data.user.email);
           navigate("/dashboard");
         }
       })

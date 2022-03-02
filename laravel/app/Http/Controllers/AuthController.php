@@ -66,34 +66,70 @@ class AuthController extends Controller
         $userId =Auth::id();
         $user = User::findOrFail($userId);
 
-        if($user->email == $request->email){
-            $validator = Validator::make($request->all(), [
-                'name' => 'required|string|between:2,100',
-                'password' => 'required|string|confirmed|min:6',
-            ]);    
-        }else{
-            $validator = Validator::make($request->all(), [
-                'name' => 'required|string|between:2,100',
+        if($request->email != null){
+            if ($request->email == $user->email){
+                return response()->json([
+                    'message' => 'Email already set.',
+                    'user' => $user
+                ], 201);    
+            }
+            $validator = Validator::make($request->email, [
                 'email' => 'required|string|email|max:100|unique:users',
-                'password' => 'required|string|confirmed|min:6',
-            ]);    
+            ]); 
+
+            if($validator->fails()){
+                return response()->json($validator->errors()->toJson(), 400);
+            }
+
+            $user->fill([
+                'email' => $request->email,
+            ]);
+            $user->save();
+            return response()->json([
+                'message' => 'Email updated',
+                'user' => $user
+            ], 201);
+        }
+
+        if($request->name != null){
+            $validator = Validator::make($request->name, [
+                'name' => 'required|string|between:2,100',
+            ]); 
+
+            if($validator->fails()){
+                return response()->json($validator->errors()->toJson(), 400);
+            }
+
+            $user->fill([
+                'name' => $request->name,
+            ]);
+            $user->save();
+            return response()->json([
+                'message' => 'Name updated',
+                'user' => $user
+            ], 201);
         }
         
-        if($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
-        }
-        $user->fill([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password)
-        ]);
-        $user->save();
-        return response()->json([
-            'message' => 'User data successfully updated',
-            'user' => $user
-        ], 201);
-    }
+        if($request->password != null){
+            $validator = Validator::make($request->password, [
+                'password' => 'required|string|confirmed|min:6',
+            ]); 
 
+            if($validator->fails()){
+                return response()->json($validator->errors()->toJson(), 400);
+            }
+
+            $user->fill([
+                'password' =>bcrypt($request->password)
+            ]);
+            $user->save();
+            return response()->json([
+                'message' => 'Password updated',
+                'user' => $user
+            ], 201);
+        }
+    }
+    
     /**
      * Log the user out (Invalidate the token).
      *
