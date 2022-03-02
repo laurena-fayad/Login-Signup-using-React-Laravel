@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import LoggedNav from "../components/LoggedNav";
 import Sidebar from "../components/Sidebar";
 import Profile from '../components/Profile';
@@ -13,5 +13,4 @@ const EditProfile = () => {
     </div>
   )
 }
-
 export default EditProfile
