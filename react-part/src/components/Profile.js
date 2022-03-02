@@ -1,28 +1,7 @@
-import React , {useEffect, useState} from "react";
-import axios from 'axios';
+import React from "react";
 
 const Profile = () => {
   
-  const [token, setToken] = useState("");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-
-  useEffect(() => {
-    setToken(localStorage.getItem("token"));
-
-    axios
-      .get("http://127.0.0.1:8000/api/auth/user-profile", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((res) => {
-        setName(res.data.name);
-        setEmail(res.data.email);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  });
-
   return (
     <div class="bg-white mt-1 mb-5">
       <div class="row">
@@ -37,10 +16,15 @@ const Profile = () => {
                 <input
                   type="text"
                   class="form-control"
-                  placeholder={name}
-                  value=""
+                  placeholder="Laurena"
                 />
               </div>
+              <div class="mt-2 text-end">
+                  <button class="btn btn-primary profile-button" type="button">
+                Update Name
+                  </button>
+            </div>
+
             </div>
             <div class="row mt-3">
               <div class="col-md-12">
@@ -48,10 +32,15 @@ const Profile = () => {
                 <input
                   type="text"
                   class="form-control"
-                  placeholder={email}
-                  value=""
+                  placeholder="email"
                 />
               </div>
+              <div class="mt-2 text-end">
+                  <button class="btn btn-primary profile-button" type="button">
+                Update Email
+                  </button>
+            </div>
+
             </div>
             <div class="row mt-3">
               <div class="col-md-12">
@@ -60,20 +49,21 @@ const Profile = () => {
                   type="text"
                   class="form-control"
                   placeholder="Password"
-                  value=""
                 />
-              </div>
+                <div class="mt-2 text-end">
+                  <button class="btn btn-primary profile-button" type="button">
+                Update Password
+                  </button>
             </div>
-            <div class="mt-5 text-center">
-              <button class="btn btn-primary profile-button" type="button">
-                Edit Profile
-              </button>
+
+              </div>
+
             </div>
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Profile;
+export default Profile
