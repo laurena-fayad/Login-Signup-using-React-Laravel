@@ -12,7 +12,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [password_confirmation, setPasswordConfirmation] = useState("");
 
-  const submit = async (e) => {
+  const submit = (e) => {
     e.preventDefault();
 
     const user = {
@@ -37,7 +37,7 @@ const Register = () => {
   return (
     <div>
       <Nav />
-      <div className="container col-xl-10 col-xxl-8 py-5">
+      <div className="container col-xl-10 col-xxl-8 py-4">
         <div className="g-lg-5 py-5 ">
           <div className="col-md-10 mx-auto col-lg-5">
             <img
@@ -47,6 +47,8 @@ const Register = () => {
               width="250"
               height="250"
             />
+
+            <div className="text-center register mb-3"> Create an account</div>
 
             <form
               onSubmit={submit}

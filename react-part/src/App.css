@@ -142,9 +142,10 @@ input.search{
   color: inherit;
 }
 
-#updates{
+#updates, .register{
   color:#6886C5;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-weight: 600;
+  font-weight: 300;
+  font-size: 20px;
 }
 
