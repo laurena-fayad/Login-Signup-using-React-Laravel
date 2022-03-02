@@ -7,6 +7,7 @@ import ContactForm from "../components/ContactForm";
 import Footer from "../components/Footer";
 import LoggedNav from "../components/LoggedNav";
 import EditProfile from "../components/EditProfile";
+import Sidebar from "../components/Sidebar";
 
 const Dashboard = () => {
   let navigate = useNavigate();
@@ -34,6 +35,7 @@ const Dashboard = () => {
   return (
     <div>
       <LoggedNav />
+      <Sidebar/>
       <Footer />
     </div>
   );
