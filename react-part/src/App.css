@@ -3,6 +3,21 @@ body, html {
   height: 100%;
 }
 
+.error-template {
+  height: 100vh;
+  padding: 40px 15px;
+  text-align: center;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+
+}
+.error-actions {
+  margin-top:15px;
+  margin-bottom:15px;
+}
+.error-actions .btn { 
+  margin-right:10px; 
+}
+
 .text-muted{
   text-align: center;
 }

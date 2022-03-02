@@ -17,7 +17,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route element={<ProtectedRoute />}>
             <Route exact path="/dashboard" element={<Dashboard />} />
-            <Route path="/dashboard/edit-profile" element={<EditProfile/>}/>
+            <Route exact path="/dashboard/edit" element={<EditProfile />} />
           </Route>
         </Routes>
       </Router>

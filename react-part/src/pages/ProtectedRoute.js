@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Login from "./Login";
+import ErrorPage from "./ErrorPage";
 
 const ProtectedRoute = () => {
   let isAuth = false;
@@ -12,7 +12,7 @@ const ProtectedRoute = () => {
     isAuth = false;
   }
 
-  return isAuth ? <Outlet /> : <Login />;
+  return isAuth ? <Outlet /> : <ErrorPage/>;
 };
 
 export default ProtectedRoute;

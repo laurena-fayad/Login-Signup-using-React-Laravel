@@ -1,7 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
+
+  let navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.clear();
+    navigate("/login");
+  }
 
   return (
     <div className="container-fluid">
@@ -18,12 +25,12 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/dashboard/edit-profile" className="nav-link active">
+                <Link to="/dashboard/edit" className="nav-link active">
                   Profile
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="logout nav-link" href="#">
+                <a className="logout nav-link" onClick={logout}>
                   Log Out
                 </a>
               </li>
