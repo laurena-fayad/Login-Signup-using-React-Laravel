@@ -63,73 +63,44 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function updateProfile(Request $request) {
-        $userId =Auth::id();
-        $user = User::findOrFail($userId);
 
-        if($request->email != null){
-            if ($request->email == $user->email){
-                return response()->json([
-                    'message' => 'Email already set.',
-                    'user' => $user
-                ], 201);    
-            }
-            $validator = Validator::make($request->email, [
-                'email' => 'required|string|email|max:100|unique:users',
-            ]); 
+        $validator = Validator::make($request->all(), [
+            'name' => 'string|between:2,100',
+            'email' => 'string|email|max:100|unique:users',
+            'password' => 'string|confirmed|min:6'
+        ]);
+        if(! auth()->user()){
+            return response()->json(['error' => 'Unauthorized'], 401);
+        } else if($validator->fails()){
+            return response()->json($validator->errors()->toJson(), 400);
 
-            if($validator->fails()){
-                return response()->json($validator->errors()->toJson(), 400);
-            }
+        } else{
+            $user =auth()->user();
 
-            $user->fill([
-                'email' => $request->email,
-            ]);
-            $user->save();
-            return response()->json([
-                'message' => 'Email updated',
-                'user' => $user
-            ], 201);
-        }
-
-        if($request->name != null){
-            $validator = Validator::make($request->name, [
-                'name' => 'required|string|between:2,100',
-            ]); 
-
-            if($validator->fails()){
-                return response()->json($validator->errors()->toJson(), 400);
-            }
-
-            $user->fill([
-                'name' => $request->name,
-            ]);
-            $user->save();
+            if($request['name']){
+            $user->name = $request['name'];
             return response()->json([
                 'message' => 'Name updated',
                 'user' => $user
-            ], 201);
-        }
-        
-        if($request->password != null){
-            $validator = Validator::make($request->password, [
-                'password' => 'required|string|confirmed|min:6',
-            ]); 
+            ], 201);}
 
-            if($validator->fails()){
-                return response()->json($validator->errors()->toJson(), 400);
-            }
+            if($request['email']){
+                $user->email = $request['email'];
+                return response()->json([
+                    'message' => 'Email updated',
+                    'user' => $user
+                ], 201);}
 
-            $user->fill([
-                'password' =>bcrypt($request->password)
-            ]);
+            if($request['password']){
+                $user->password = bcrypt($request->password);
+                return response()->json([
+                    'message' => 'Password updated',
+                    'user' => $user
+                ], 201);}
+    
             $user->save();
-            return response()->json([
-                'message' => 'Password updated',
-                'user' => $user
-            ], 201);
         }
     }
-    
     /**
      * Log the user out (Invalidate the token).
      *

@@ -1,38 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
 
-  const name = localStorage.getItem("name");
-  const email = localStorage.getItem("email");
+  const token = localStorage.getItem("token");
+  let name = localStorage.getItem("name");
+  let email = localStorage.getItem("email");
   const password = "";
+
+  const [updated_email, setUpdatedEmail] = useState("");
+  const [updated_name, setUpdatedName] = useState("");
+  const [updated_password, setUpdatedPassword] = useState("");
+
 
   const updateEmail = (e) => {
     e.preventDefault();
 
     axios
-      .post("http://127.0.0.1:8000/api/auth/update-profile", {email:email})
+      .post("http://127.0.0.1:8000/api/auth/update-profile", {email:updated_email},
+      {headers: { Authorization: `Bearer ${token}`}})
       .then((res) => {
-        if (res.data.message == "User data successfully updated") {
+        if (res.data.message == "Email updated") {
           localStorage.setItem("email", res.data.user.email);
+          document.getElementById("updates").innerHTML = "Email updated!"
         }
       })
       .catch(function (error) {
-        console.log(error);
+        document.getElementById("updates").innerHTML = error
       });
   };
 
-  const updateName = () => {
+  const updateName = (e) => {
+    e.preventDefault();
+
     axios
-      .post("http://127.0.0.1:8000/api/auth/update-profile", {name:name})
+      .post("http://127.0.0.1:8000/api/auth/update-profile", {name:updated_name},
+      {headers: { Authorization: `Bearer ${token}`}})
       .then((res) => {
-        if (res.data.message == "User data successfully updated") {
+        if (res.data.message == "Name updated") {
           localStorage.setItem("name", res.data.user.name);
+          document.getElementById("updates").innerHTML = "Name updated!"
         }
       })
       .catch(function (error) {
-        console.log(error);
+        document.getElementById("updates").innerHTML = error
       });
   };
 
@@ -47,7 +59,8 @@ const Profile = () => {
             <div class="row mt-2">
               <div class="col-md-12">
                 <label class="labels">Name</label>
-                <input type="text" class="form-control" placeholder={name} />
+                <input type="text" class="form-control" placeholder={name} 
+                onChange={(e) => setUpdatedName(e.target.value)}/>
               </div>
               <div class="mt-2 text-end">
                 <button class="btn btn-primary profile-button" type="button" onClick={updateName}>
@@ -58,7 +71,8 @@ const Profile = () => {
             <div class="row mt-3">
               <div class="col-md-12">
                 <label class="labels">Email Address</label>
-                <input type="text" class="form-control" placeholder={email} />
+                <input type="text" class="form-control" placeholder={email} 
+                onChange={(e) => setUpdatedEmail(e.target.value)}/>
               </div>
               <div class="mt-2 text-end">
                 <button class="btn btn-primary profile-button" type="button" onClick={updateEmail}>
@@ -82,6 +96,7 @@ const Profile = () => {
               </div>
             </div>
           </div>
+          <div id="updates" class="text-center"></div>
         </div>
       </div>
     </div>
