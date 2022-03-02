@@ -15,23 +15,30 @@ const Register = () => {
   const submit = (e) => {
     e.preventDefault();
 
-    const user = {
-      name: name,
-      email: email,
-      password: password,
-      password_confirmation: password_confirmation,
-    };
+    if (password.length >= 6 && name.length >=2){
 
-    axios
-      .post("http://127.0.0.1:8000/api/auth/register", { ...user })
-      .then((res) => {
-        if (res.data.message == "User successfully registered") {
-          navigate("/login");
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      const user = {
+        name: name,
+        email: email,
+        password: password,
+        password_confirmation: password_confirmation,
+      };
+  
+      axios
+        .post("http://127.0.0.1:8000/api/auth/register", { ...user })
+        .then((res) => {
+          if (res.data.message == "User successfully registered") {
+            navigate("/login");
+          }else if (res.data.message == "Email already taken"){
+            console.log(res.data.message)
+            document.getElementById("registered").innerHTML = "Email is already taken"
+          }
+        })
+    }else if (password.length < 6){
+      document.getElementById("registered").innerHTML = "Password must be at least 6 characters"
+    }else if (name.length < 2){
+      document.getElementById("registered").innerHTML = "Name must be at least 2 characters"
+    }
   };
 
   return (
@@ -99,6 +106,8 @@ const Register = () => {
                 Sign Up
               </button>
             </form>
+            <div id="registered" className="text-center py-4"></div>
+
           </div>
         </div>
       </div>
