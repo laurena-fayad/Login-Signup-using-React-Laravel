@@ -3,6 +3,9 @@ body, html {
   height: 100%;
 }
 
+.text-muted{
+  text-align: center;
+}
 
 .about, .search{
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;

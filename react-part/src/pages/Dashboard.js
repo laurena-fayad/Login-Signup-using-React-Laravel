@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import AboutUs from "../components/AboutUs";
-import CarouselContainer from "../components/CarouselContainer";
-import ContactForm from "../components/ContactForm";
 import Footer from "../components/Footer";
 import LoggedNav from "../components/LoggedNav";
 import EditProfile from "../components/EditProfile";
@@ -36,7 +33,7 @@ const Dashboard = () => {
     <div>
       <LoggedNav />
       <Sidebar/>
-      <Footer />
+      <EditProfile/>
     </div>
   );
 };
