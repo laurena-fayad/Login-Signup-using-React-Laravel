@@ -30,7 +30,6 @@ const Register = () => {
           if (res.data.message == "User successfully registered") {
             navigate("/login");
           }else if (res.data.message == "Email already taken"){
-            console.log(res.data.message)
             document.getElementById("registered").innerHTML = "Email is already taken"
           }
         })
@@ -68,7 +67,7 @@ const Register = () => {
                   required
                   onChange={(e) => setName(e.target.value)}
                 />
-                <label for="floatingInput">Full Name</label>
+                <label htmlFor="floatingInput">Full Name</label>
               </div>
               <div className="form-floating mb-3">
                 <input
@@ -78,7 +77,7 @@ const Register = () => {
                   required
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <label for="floatingInput">Email address</label>
+                <label htmlFor="floatingInput">Email address</label>
               </div>
               <div className="form-floating mb-3">
                 <input
@@ -89,7 +88,7 @@ const Register = () => {
                   required
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <label for="floatingPassword">Password</label>
+                <label htmlFor="floatingPassword">Password</label>
               </div>
               <div className="form-floating mb-3">
                 <input

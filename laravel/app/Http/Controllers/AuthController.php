@@ -42,7 +42,6 @@ class AuthController extends Controller
 
         $email_check = User::where('email', '=', $request->email)->first();
         if ($email_check === null) {
-
             $validator = Validator::make($request->all(), [
                 'name' => 'required|string|between:2,100',
                 'email' => 'required|string|email|max:100|unique:users',
@@ -73,6 +72,14 @@ class AuthController extends Controller
      */
     public function updateProfile(Request $request) {
 
+        if($request['email']){
+            $email_check = User::where('email', '=', $request->email)->first();
+            if ($email_check !== null) {
+                return response()->json([
+                    'message' => 'Email already taken',
+                ]);    
+            }
+        }
         $validator = Validator::make($request->all(), [
             'name' => 'string|between:2,100',
             'email' => 'string|email|max:100|unique:users',

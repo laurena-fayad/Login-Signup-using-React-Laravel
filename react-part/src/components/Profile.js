@@ -23,11 +23,12 @@ const Profile = () => {
       .then((res) => {
         if (res.data.message == "Email updated") {
           localStorage.setItem("email", res.data.user.email);
-          document.getElementById("updates").innerHTML = "Email updated!"
-        }
-      })
+          document.getElementById("regularmsg").innerHTML = "Email updated!"
+        }else if (res.data.message == "Email already taken"){
+          document.getElementById("errormsg").innerHTML = "Email is already taken"
+        }})
       .catch(function (error) {
-        document.getElementById("updates").innerHTML = error
+        document.getElementById("errormsg").innerHTML = error
       });
   };
 
@@ -40,11 +41,11 @@ const Profile = () => {
       .then((res) => {
         if (res.data.message == "Name updated") {
           localStorage.setItem("name", res.data.user.name);
-          document.getElementById("updates").innerHTML = "Name updated!"
+          document.getElementById("regularmsg").innerHTML = "Name updated!"
         }
       })
       .catch(function (error) {
-        document.getElementById("updates").innerHTML = error
+        document.getElementById("errormsg").innerHTML = error
       });
   };
 
@@ -58,53 +59,53 @@ const Profile = () => {
       {headers: { Authorization: `Bearer ${token}`}})
       .then((res) => {
         if (res.data.message == "Password updated") {
-          document.getElementById("updates").innerHTML = "Password updated!"
+          document.getElementById("regularmsg").innerHTML = "Password updated!"
         }
       })
       .catch(function (error) {
-        document.getElementById("updates").innerHTML = error
+        document.getElementById("errormsg").innerHTML = "<div className=errormsg>" + error + "</div>"
       });
     }else{
-      document.getElementById("updates").innerHTML = "Passwords do not match!"
+      document.getElementById("errormsg").innerHTML = "Passwords do not match!"
     }
   };
 
 
   return (
-    <div class="bg-white mt-1 mb-5">
-      <div class="row">
-        <div class="col-md-6 mx-auto">
-          <div class="p-3 py-5">
-            <div class="d-flex align-items-center mb-3">
-              <h4 class="text-right">Edit Profile Information</h4>
+    <div className="bg-white mt-1 mb-5">
+      <div className="row">
+        <div className="col-md-6 mx-auto">
+          <div className="p-3 py-5">
+            <div className="d-flex align-items-center mb-3">
+              <h4 className="text-right">Edit Profile Information</h4>
             </div>
-            <div class="row mt-2">
-              <div class="col-md-12">
-                <label class="labels">Name</label>
+            <div className="row mt-2">
+              <div className="col-md-12">
+                <label className="labels">Name</label>
                 <input type="text" class="form-control" placeholder={name} 
                 onChange={(e) => setUpdatedName(e.target.value)}/>
               </div>
-              <div class="mt-2 text-end">
-                <button class="btn btn-primary profile-button" type="button" onClick={updateName}>
+              <div className="mt-2 text-end">
+                <button className="btn btn-primary profile-button" type="button" onClick={updateName}>
                   Update Name
                 </button>
               </div>
             </div>
-            <div class="row mt-3">
-              <div class="col-md-12">
-                <label class="labels">Email Address</label>
+            <div className="row mt-3">
+              <div className="col-md-12">
+                <label className="labels">Email Address</label>
                 <input type="text" class="form-control" placeholder={email} 
                 onChange={(e) => setUpdatedEmail(e.target.value)}/>
               </div>
-              <div class="mt-2 text-end">
-                <button class="btn btn-primary profile-button" type="button" onClick={updateEmail}>
+              <div className="mt-2 text-end">
+                <button className="btn btn-primary profile-button" type="button" onClick={updateEmail}>
                   Update Email
                 </button>
               </div>
             </div>
-            <div class="row mt-3">
-              <div class="col-md-12">
-                <label class="labels">Password</label>
+            <div className="row mt-3">
+              <div className="col-md-12">
+                <label className="labels">Password</label>
                 <input
                   type="password"
                   class="form-control"
@@ -112,23 +113,24 @@ const Profile = () => {
                   onChange={(e) => setUpdatedPassword(e.target.value)}/>
               </div>
             </div>
-            <div class="row mt-3">
-              <div class="col-md-12">
-                <label class="labels">Password Confirmation</label>
+            <div className="row mt-3">
+              <div className="col-md-12">
+                <label className="labels">Password Confirmation</label>
                 <input
                   type="password"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Password"
                   onChange={(e) => setPasswordConf(e.target.value)}/>
-                <div class="mt-2 text-end">
-                  <button class="btn btn-primary profile-button" type="button" onClick={updatePassword}>
+                <div className="mt-2 text-end">
+                  <button className="btn btn-primary profile-button" type="button" onClick={updatePassword}>
                     Confirm Updated Password
                   </button>
                 </div>
               </div>
             </div>
           </div>
-          <div id="updates" class="text-center"></div>
+          <div id="regularmsg" className="text-center"></div>
+          <div id="errormsg" className="text-center"></div>
         </div>
       </div>
     </div>

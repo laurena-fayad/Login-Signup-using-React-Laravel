@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import EditProfile from "./pages/EditProfile";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route exact path="/dashboard" element={<Dashboard />} />
             <Route exact path="/dashboard/edit" element={<EditProfile />} />
           </Route>
+          <Route path="*" element={<PageNotFound/>}></Route>
         </Routes>
       </Router>
     </div>

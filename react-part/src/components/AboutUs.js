@@ -4,12 +4,12 @@ import logo from "./../assets/bookmates.png";
 const AboutUs = () => {
   return (
     <div>
-      <div class="container col-xxl-8 px-4 py-5">
-        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-          <div class="col-10 col-sm-8 col-lg-6">
+      <div className="container col-xxl-8 px-4 py-5">
+        <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
+          <div className="col-10 col-sm-8 col-lg-6">
             <img
               src={logo}
-              class="d-block mx-lg-auto img-fluid"
+              className="d-block mx-lg-auto img-fluid"
               alt="bookmates logo"
               width="250"
               height="250"
@@ -17,11 +17,11 @@ const AboutUs = () => {
               style={{borderRadius: 15}}
             />
           </div>
-          <div class="col-lg-6">
-            <p class="about display-5 lh-1 mb-3">
+          <div className="col-lg-6">
+            <p className="about display-5 lh-1 mb-3">
               About bookmates
             </p>
-            <p class="lead">
+            <p className="lead">
               Ever finished a book and wanted to discuss the ending with someone, but that someone wasn't around? 
               Bookmates is an application meant to bring you closer to readers around you.
               Make new friends, discuss your favorite books, and build your to-read list for the year.

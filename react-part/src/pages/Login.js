@@ -31,7 +31,7 @@ const Login = () => {
       .catch(function (error) {
         if (error = "Unauthorized")
         {
-          document.getElementById("logged").innerHTML = "Incorrect email/password."
+          document.getElementById("errorsts").innerHTML = "Incorrect email/password."
           e.target.reset();
         }
       });
@@ -65,7 +65,7 @@ const Login = () => {
                   required
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <label for="floatingInput">Email address</label>
+                <label htmlFor="floatingInput">Email address</label>
               </div>
               <div className="form-floating mb-3">
                 <input
@@ -76,14 +76,13 @@ const Login = () => {
                   required
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <label for="floatingPassword">Password</label>
+                <label htmlFor="floatingPassword">Password</label>
               </div>
               <button className="w-100 btn btn-lg btn-primary" type="submit">
                 Log in
               </button>
             </form>
-            <div id="logged" className="text-center py-4"></div>
-            
+            <div id="errorsts" className="text-center py-4"></div>
           </div>
         </div>
       </div>
