@@ -54,29 +54,29 @@ const Profile = () => {
       });
   };
 
-
   const updatePassword = (e) => {
     e.preventDefault();
     document.getElementById("regularmsg").innerHTML = ""
     document.getElementById("errormsg").innerHTML = ""
 
-    if (updated_password == password_conf){
-      axios
-      .post("http://127.0.0.1:8000/api/auth/update-profile", {password:updated_password, password_confirmation:password_conf},
-      {headers: { Authorization: `Bearer ${token}`}})
-      .then((res) => {
-        if (res.data.message == "Password updated") {
-          document.getElementById("regularmsg").innerHTML = "Password updated!"
-        }
-      })
-      .catch(function (error) {
-        document.getElementById("errormsg").innerHTML = "<div className=errormsg>" + error + "</div>"
-      });
-    }else{
-      document.getElementById("errormsg").innerHTML = "Passwords do not match!"
+    if(updated_password.length >= 6 && updated_password == password_conf){
+        axios
+        .post("http://127.0.0.1:8000/api/auth/update-profile", {password:updated_password, password_confirmation:password_conf},
+        {headers: { Authorization: `Bearer ${token}`}})
+        .then((res) => {
+          if (res.data.message == "Password updated") {
+            document.getElementById("regularmsg").innerHTML = "Password updated!"
+          }
+        })
+        .catch(function (error) {
+          document.getElementById("errormsg").innerHTML = error
+        });
+    }else if (updated_password !== password_conf){
+        document.getElementById("errormsg").innerHTML = "Passwords do not match!"
+    }else if(password.length<6) {
+      document.getElementById("errormsg").innerHTML = "Password must be at least 6 characters"
     }
   };
-
 
   return (
     <div className="bg-white mt-1 mb-5">
