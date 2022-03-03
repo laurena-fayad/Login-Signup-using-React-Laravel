@@ -17,6 +17,9 @@ const Profile = () => {
   const updateEmail = (e) => {
     e.preventDefault();
 
+    document.getElementById("regularmsg").innerHTML = ""
+    document.getElementById("errormsg").innerHTML = ""
+
     axios
       .post("http://127.0.0.1:8000/api/auth/update-profile", {email:updated_email},
       {headers: { Authorization: `Bearer ${token}`}})
@@ -34,6 +37,8 @@ const Profile = () => {
 
   const updateName = (e) => {
     e.preventDefault();
+    document.getElementById("regularmsg").innerHTML = ""
+    document.getElementById("errormsg").innerHTML = ""
 
     axios
       .post("http://127.0.0.1:8000/api/auth/update-profile", {name:updated_name},
@@ -52,6 +57,8 @@ const Profile = () => {
 
   const updatePassword = (e) => {
     e.preventDefault();
+    document.getElementById("regularmsg").innerHTML = ""
+    document.getElementById("errormsg").innerHTML = ""
 
     if (updated_password == password_conf){
       axios

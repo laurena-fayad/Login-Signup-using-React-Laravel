@@ -15,7 +15,7 @@ const Register = () => {
   const submit = (e) => {
     e.preventDefault();
 
-    if (password.length >= 6 && name.length >=2){
+    if (password.length >= 6 && name.length >=2 && password == password_confirmation){
 
       const user = {
         name: name,
@@ -37,6 +37,8 @@ const Register = () => {
       document.getElementById("registered").innerHTML = "Password must be at least 6 characters"
     }else if (name.length < 2){
       document.getElementById("registered").innerHTML = "Name must be at least 2 characters"
+    }else if (password != password_confirmation){
+      document.getElementById("registered").innerHTML = "Passwords do not match"
     }
   };
 
