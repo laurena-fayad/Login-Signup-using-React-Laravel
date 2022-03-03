@@ -105,7 +105,7 @@ const ContactForm = () => {
                   Submit
                 </Button>
                 <>
-                {status?.type === 'success' && <p className='status_msg'>Message successfully sent!</p>}
+                {status?.type === 'success' && <p className='register text-center my-3'>Message successfully sent!</p>}
                 {status?.type === 'error' && (
                   <p className='status_msg'>Error - Message not sent.</p>
                 )}
