@@ -30,7 +30,7 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="logout nav-link" onClick={logout}>
+                <a className="logout nav-link" onClick={logout} href="#">
                   Log Out
                 </a>
               </li>
